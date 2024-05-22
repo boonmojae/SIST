@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나의 정보 수정</title>
+<title>수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/codeMate.css" type="text/css">
 </head>
 <body>
