@@ -1,63 +1,69 @@
 @charset "UTF-8";
 
 /* 타이틀 */
-.title{
- margin: 0;
- margin-top: 50px;
- display: flex;
- font-size: 20pt;
- align-items: center; /*세로 정렬*/
- justify-content: center; /*가로 정렬*/
+.title {
+    margin: 0;
+    margin-top: 120px;
+    font-size: 23pt;
+    text-align: center; /* 중앙 정렬 */
 }
-/* 수정폼 */
-.page-main {
-   background: #FFFFFF;
-   margin: 40px 0;
-   border-radius: 5px;
-   box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
-   min-height: 650px;
-}
+
+/* 본문 가운데 정렬 */
 .align-center {
-   text-align: center;
+    text-align: center;
 }
+
+/* Form 스타일 */
+.upForm {
+    width: 320px; /* Form의 너비 */
+    margin: 0 auto; /* 수평 가운데 정렬 */
+}
+
 ul {
-   list-style: none;
+    list-style: none;
+    padding: 0; /* 기본 패딩 제거 */
 }
-label{
-	font-size:12px;
+
+li {
+    margin-bottom: 9px; /* 각 li 요소 간에 여백 추가 */
 }
-.input-check{
-	 /* 크기 조정 */
-    width: 100px;   /* 버튼 너비 */
-    height: 20px;   /* 버튼 높이 */
+
+label {
+    font-size: 15px;
+    margin-bottom: -12px;
+    display: block; /* 블록 레벨 요소로 변경 */
+    text-align: left; /* 오른쪽 정렬 */
+}
+
+.input-check {
+    /* 크기 조정 */
+    width: 100%; /* 부모 요소의 너비에 맞게 설정 */
+    height: 35px; /* 버튼 높이 */
     
     /* 모서리 둥글게 */
-    border-radius: 3px;
+    border-radius: 5px;
     
     /* 테두리 스타일 */
-    border: 1px solid #000;
+    border: 1px solid #8f8f8f;
     
     /* 글꼴 스타일 */
     font-size: 16px;
     font-weight: bold;
+    
+    margin-bottom: 5px; /* 각 input 간에 여백 추가 */
 }
-.align-center {
-   text-align: center;
-}
-.align-left {
-   text-align: left;
-}
+
 .save_btn {
     /* 크기 조정 */
-    width: 200px;   /* 버튼 너비 */
-    height: 50px;   /* 버튼 높이 */
+    width: 100%; /* 부모 요소의 너비에 맞게 설정 */
+    height: 50px; /* 버튼 높이 */
     
     /* 색상 변경 */
     background-color: #000; /* 배경 색상 */
-    color: white;              /* 글자 색상 */
+    color: white; /* 글자 색상 */
     
     /* 모서리 둥글게 */
-    border-radius: 12px;
+    border-radius: 5px;
     
     /* 테두리 스타일 */
     border: none;
@@ -65,4 +71,21 @@ label{
     /* 글꼴 스타일 */
     font-size: 16px;
     font-weight: bold;
+}
+
+.small_font {
+    font-size: 15px;
+    color: #8f8f8f;
+    margin-top: -18px; /* 위쪽으로 위치 이동 */
+}
+.myCount{
+	float:left;
+	font-size: 15px;
+    /* margin-bottom: -12px; */
+    display: block; /* 블록 레벨 요소로 변경 */
+    text-align: left; /* 오른쪽 정렬 */
+}
+a{
+	text-decoration-line:none;
+	color:#000;
 }
