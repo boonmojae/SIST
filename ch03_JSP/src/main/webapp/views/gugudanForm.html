@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단</title>
+</head>
+<body>
+<h1>구구단 단 입력</h1><!-- 주소에 데이터 나오게 보냄=get방식 /html은 view안에 들어가있고 servlet는 다른곳에 있어서 action주소를 꼭 같게 해야됨-->
+<form action="/ch03_JSP/gugudan" method="get"><!-- action주소는 servlet이 있는곳이랑 같아야됨(경로주소 같아야됨) 데이터 전송 방식은 get -->
+	단 <input type="number" name="dan" min="2" max="9"><!-- 식별자 dan(parameter name) -->
+	<input type="submit" value="전송">
+</form>
+</body>
+</html>
