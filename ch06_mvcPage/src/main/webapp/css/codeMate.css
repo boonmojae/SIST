@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+/* 타이틀 */
+.title{
+ margin: 0;
+ margin-top: 50px;
+ display: flex;
+ font-size: 20pt;
+ align-items: center; /*세로 정렬*/
+ justify-content: center; /*가로 정렬*/
+}
+/* 수정폼 */
+.page-main {
+   background: #FFFFFF;
+   margin: 40px 0;
+   border-radius: 5px;
+   box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
+   min-height: 650px;
+}
+.align-center {
+   text-align: center;
+}
+ul {
+   list-style: none;
+}
+label{
+	font-size:12px;
+}
+.input-check{
+	 /* 크기 조정 */
+    width: 100px;   /* 버튼 너비 */
+    height: 20px;   /* 버튼 높이 */
+    
+    /* 모서리 둥글게 */
+    border-radius: 3px;
+    
+    /* 테두리 스타일 */
+    border: 1px solid #000;
+    
+    /* 글꼴 스타일 */
+    font-size: 16px;
+    font-weight: bold;
+}
+.align-center {
+   text-align: center;
+}
+.align-left {
+   text-align: left;
+}
+.save_btn {
+    /* 크기 조정 */
+    width: 200px;   /* 버튼 너비 */
+    height: 50px;   /* 버튼 높이 */
+    
+    /* 색상 변경 */
+    background-color: #000; /* 배경 색상 */
+    color: white;              /* 글자 색상 */
+    
+    /* 모서리 둥글게 */
+    border-radius: 12px;
+    
+    /* 테두리 스타일 */
+    border: none;
+    
+    /* 글꼴 스타일 */
+    font-size: 16px;
+    font-weight: bold;
+}
