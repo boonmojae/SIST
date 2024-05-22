@@ -8,24 +8,27 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/codeMate.css" type="text/css">
 </head>
 <body>
- <div class="myCount">
-   		<a href="a">나의 정보</a><br>
-   		<a>My 코메</a><br>
-   		<a>참여중인 팀</a><br>
-   		<a>나의 코메 신청</a><br>
-   		<a>나의 코메 모집</a><br>
-   		<a>북마크</a><br><br>
-   		<hr style="border-color: #8f8f8f; border-width: 1px;"><br>
-   		<a>나의 활동</a><br>
-   		<a>쪽지</a><br>
-   		<a>내가 쓴 글</a><br>
+<div class="float-A">
+ 	<div class="myCount">
+   		<a href="a">나의 정보</a><br><br><br>
+   		<a>My 코메</a><br><br>
+   		<a>참여중인 팀</a><br><br>
+   		<a>나의 코메 신청</a><br><br>
+   		<a>나의 코메 모집</a><br><br>
+   		<a>북마크</a><br><br><br>
+   		<hr style="border-color: #8f8f8f; border-width: 1px;"><br><br>
+   		<a>나의 활동</a><br><br>
+   		<a>쪽지</a><br><br>
+   		<a>내가 쓴 글</a><br><br>
    		<a>내가 쓴 댓글</a>
-		</div>
-		<div class="align-center">
+	</div>
+</div>		
 		
 		
 		
 <br><br><br>
+<div class="float-B">
+<div class="align-center">
     <h3 class="title">나의 정보 수정</h3>
 	<br><br>
     <form name="upForm" action="" method="post" class="upForm">
@@ -64,6 +67,7 @@
             <span>로그아웃</span>
         </div>
     </form>
+</div>
 </div>
 </body>
 </html>

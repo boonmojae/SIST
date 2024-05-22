@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+.float-A{
+	margin:140px;
+	width:10%;
+	height:600px;
+	float:left;
+	background:pink;
+}
+.float-B{
+	float:center;
+}
 /* 타이틀 */
 .title {
     margin: 0;
@@ -78,13 +88,13 @@ label {
     color: #8f8f8f;
     margin-top: -18px; /* 위쪽으로 위치 이동 */
 }
-.myCount{
+/* .myCount{
 	float:left;
 	font-size: 15px;
-    /* margin-bottom: -12px; */
-    display: block; /* 블록 레벨 요소로 변경 */
-    text-align: left; /* 오른쪽 정렬 */
-}
+    margin-bottom: -12px;
+    display: block; 블록 레벨 요소로 변경
+    text-align: left; 오른쪽 정렬
+} */
 a{
 	text-decoration-line:none;
 	color:#000;
