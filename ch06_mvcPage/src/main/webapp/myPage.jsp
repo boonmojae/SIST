@@ -6,29 +6,30 @@
 <meta charset="UTF-8">
 <title>나의 정보 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/codeMate.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/side.css" type="text/css">
 </head>
 <body>
+<!-- 헤더 -->
+<!-- 사이드바 -->
 <div class="float-A">
  	<div class="myCount">
-   		<a href="a">나의 정보</a><br><br><br>
-   		<a>My 코메</a><br><br>
-   		<a>참여중인 팀</a><br><br>
-   		<a>나의 코메 신청</a><br><br>
-   		<a>나의 코메 모집</a><br><br>
-   		<a>북마크</a><br><br><br>
-   		<hr style="border-color: #8f8f8f; border-width: 1px;"><br><br>
-   		<a>나의 활동</a><br><br>
-   		<a>쪽지</a><br><br>
-   		<a>내가 쓴 글</a><br><br>
-   		<a>내가 쓴 댓글</a>
+   		<a href="a" class="sideB_font">나의 정보</a>
+   		<a class="sideB_font">My 코메</a>
+   		<a href="a">참여중인 팀</a>
+   		<a href="a">나의 코메 신청</a>
+   		<a href="a">나의 코메 모집</a>
+   		<a href="a">북마크</a>
+   		<a class="sideB_font">나의 활동</a>
+   		<a href="a">쪽지</a>
+   		<a href="a">내가 쓴 글</a>
+   		<a href="a">내가 쓴 댓글</a>
 	</div>
-</div>		
-		
-		
-		
+</div>	
+<!-- 사이드바 끝 -->
+<!-- 메인 정보 수정 -->
 <br><br><br>
+<div class="float-B">
 <div class="align-center">
-    
     <form name="upForm" action="" method="post" class="upForm">
     <h3 class="title">나의 정보 수정</h3>
 	<br><br>
@@ -68,5 +69,7 @@
         </div>
     </form>
 </div>
+</div>
+<!-- 메인 정보 수정 끝 -->
 </body>
 </html>
