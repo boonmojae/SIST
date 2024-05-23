@@ -280,7 +280,17 @@ public class BoardDAO {
 			conn.setAutoCommit(false);
 			
 			//좋아요 삭제(포링키로 자식을 먼저 삭제해야 부모글 삭제)
+			sql = "DELETE FROM zboard_fav WHERE board_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			pstmt.executeUpdate();
+			
 			//댓글 삭제
+			sql = "DELETE FROM zboard_reply WHERE board_num=?";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, board_num);
+			pstmt2.executeUpdate();
+			
 			//부모글 삭제
 			sql = "DELETE FROM zboard WHERE board_num=?";
 			pstmt3 = conn.prepareStatement(sql);
