@@ -6,38 +6,50 @@
 <meta charset="UTF-8">
 <title>내가 쓴 글</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage8.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/side.css" type="text/css">
 </head>
-<body>		
-<br><br><br>
+<body>
+<!-- 헤더 -->
+<!-- 사이드바 -->
 <div class="float-A">
  	<div class="myCount">
-   		<a href="a">나의 정보</a><br><br><br>
-   		<a>My 코메</a><br><br>
-   		<a>참여중인 팀</a><br><br>
-   		<a>나의 코메 신청</a><br><br>
-   		<a>나의 코메 모집</a><br><br>
-   		<a>북마크</a><br><br><br>
-   		<hr style="border-color: #8f8f8f; border-width: 1px;"><br><br>
-   		<a>나의 활동</a><br><br>
-   		<a>쪽지</a><br><br>
-   		<a>내가 쓴 글</a><br><br>
-   		<a>내가 쓴 댓글</a>
+   		<a href="a" class="sideB_font">나의 정보</a>
+   		<a class="sideB_font">My 코메</a>
+   		<a href="a">참여중인 팀</a>
+   		<a href="a">나의 코메 신청</a>
+   		<a href="a">나의 코메 모집</a>
+   		<a href="a">북마크</a>
+   		<a class="sideB_font">나의 활동</a>
+   		<a href="a">쪽지</a>
+   		<a href="a">내가 쓴 글</a>
+   		<a href="a">내가 쓴 댓글</a>
 	</div>
-</div>
-
+</div>	
+<!-- 사이드바 끝 -->
+<!-- 메인 정보 수정 -->
+<br><br><br><!-- br보다 마진이나 패딩값으로 내리기 -->
+<div class="float-B">
 <div class="align-center">
     <h3 class="title">내가 쓴 글</h3>
-</div><br><br><br>
+</div>
+<br>
+<div class="option-container">
+    <select class="styled-select">
+        <option value="option1">전체</option>
+        <option value="option2">모집</option>
+        <option value="option3">자유</option>
+    </select>
+</div>
 <div class="box">
 <div class="write">
-내가 쓴 글 내가 쓴 글 내가 쓴 글 내가 쓴 글
+내가 쓴 글 내가 쓴 글 내가 쓴 내가 쓴 글 내가 쓴 내가 쓴 글
 </div>
 <div class="btn_float">
 	<input type="submit" value="수정" id="myUpdate_btn" name="myUpdate_btn" class="myUpdate_btn">
 	<input type="submit" value="취소" id="myDelete_btn" name="myDelete_btn" class="myDelete_btn">
 </div>
 </div>
-
+</div>
 <div class="box">
 <div class="write">
 내가
@@ -69,5 +81,6 @@ iop
 	<input type="submit" value="취소" id="myDelete_btn" name="myDelete_btn" class="myDelete_btn">
 </div>
 </div>
+<!-- 메인 정보 수정 끝 -->
 </body>
 </html>

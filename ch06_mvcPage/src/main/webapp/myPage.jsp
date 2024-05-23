@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>나의 정보 수정</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/codeMate.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/side.css" type="text/css">
 </head>
 <body>
@@ -27,7 +27,7 @@
 </div>	
 <!-- 사이드바 끝 -->
 <!-- 메인 정보 수정 -->
-<br><br><br>
+<br><br><br><!-- br보다 마진이나 패딩값으로 내리기 -->
 <div class="float-B">
 <div class="align-center">
     <form name="upForm" action="" method="post" class="upForm">
