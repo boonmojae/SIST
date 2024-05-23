@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
 .float-A{
-	margin:140px;
+	margin:160px;
 	width:10%;
 	height:600px;
 	float:left;
-	background:pink;
 }
 .float-B{
 	float:center;

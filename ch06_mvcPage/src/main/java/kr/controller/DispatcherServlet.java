@@ -33,7 +33,7 @@ public class DispatcherServlet extends HttpServlet{
         if(propsArray == null){
         	//properties 파일이 분리되어 있지 않아도 배열로 변환
         	propsArray = (String[])Arrays.asList(propsPath).toArray();
-        }
+        }  
         
         Properties pr = new Properties();//명령어와 처리클래스의 매핑정보를 저장할 Properties객체 생성
 		

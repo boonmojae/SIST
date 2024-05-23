@@ -29,9 +29,10 @@
 <br><br><br>
 <div class="float-B">
 <div class="align-center">
+    
+    <form name="upForm" action="" method="post" class="upForm">
     <h3 class="title">나의 정보 수정</h3>
 	<br><br>
-    <form name="upForm" action="" method="post" class="upForm">
         <div>
             <ul>
                 <li>

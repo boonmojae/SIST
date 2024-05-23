@@ -133,8 +133,83 @@ $(function(){
 		
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mre_form">';
-		modifyUI += '<input type="hidden" name="re_num" id="mre_num" value="' + re_num + '">';
+		modifyUI += '<input type="hidden" name="re_num" id="mre_num" value="' + re_num + '">';//없는건데 동적으로 만든 폼
 		modifyUI += '<textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content" >' + content + '</textarea>';
+		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>'
+		modifyUI += '<div id="mre_second" class="align-right">';
+		modifyUI += ' <input type="submit" value="수정">';//이건 공백 안줘도 되는데 넣어줌
+		modifyUI += ' <input type="button" value="취소" class="re-reset">';//input태그 앞에 공백주면 댓글 수정/취소 버튼 사이에 공백
+		modifyUI += '</div>';
+		modifyUI += '<hr size="1" noshade width="96%">';
+		modifyUI += '</form>';
+		
+		//이젠에 이미 수정하는 댓글이 있을 경우 수정버튼을 클릭하면 sub-item 클래스로 지정된 div를 환원시키고 수정폼을 제거함
+		initModifyForm();
+		
+		//수정버튼을 감싸고 있는 div
+		$(this).parent().hide();//empty가 아니고 안보여지게만 함
+		
+		//수정폼을 수정하고자 하는 데이터가 있는 div에 노출
+		$(this).parents('.item').append(modifyUI);//this=button/parent는 바로 위에 부모,parents는 부모를 찾을수 있음
+		
+		//입력한 글자수 셋팅
+		let inputLength = $('#mre_content').val().length;
+		let remain = 300 - inputLength;
+		remain += '/300';
+		
+		//문서 객체에 반영(공백 후손선택자)
+		$('#mre_first .letter-count').text(remain);
+		
+	});
+	
+	//댓글 수정폼 초기화
+	function initModifyForm(){
+		$('.sub-item').show();
+		$('#mre_form').remove();
+	}
+	
+	//수정폼에서 취소버튼 클릭시 수정폼 초기화(이벤트 연결)
+	$(document).on('click','.re-reset',function(){
+		initModifyForm();
+	});
+	//댓글 수정
+	$(document).on('submit','#mre_form',function(event){//event를 매개변수로 받아서 기본 이벤트 제거하기
+		if($('#mre_content').val().trim()==''){
+			alert('내용을 입력하세요');
+			$('#mre_content').val('').focus();
+			return false;
+		}
+		
+		//폼에 입력한 데이터 반환
+		let form_data = $(this).serialize();
+		
+		//서버와 통신
+		$.ajax({
+			url:'updateReply.do',
+			type:'post',
+			data:form_data,
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인해야 수정할 수 있습니다');
+				}else if(param.result == 'success'){										
+					$('#mre_form').parent().find('p').html($('#mre_content').val().replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>'));//parent(div)에 숨겨져있는 p태그를 찾아 데이터를 넣어줌/.html(여기에 수정된 댓글 내용 넣어줌)
+					$('#mre_form').parent().find('.modify-date').text('최근 수정일 : 5초미만');
+					//수정폼 삭제 및 초기화
+					initModifyForm();
+				}else if(param.result == 'wrongAccess'){
+					alert('타인의 글을 수정할 수 없습니다');
+				}else{
+					alert('댓글 수정 오류 발생');
+				}
+			},
+			error:function(){
+			alert('네트워크 오류발생');	
+			}
+		});
+		
+		//기본 이벤트 제거
+		event.preventDefault();
 	});
 	/*==============================
 	* 댓글 등록 및 수정 공통
