@@ -12,15 +12,39 @@
 }
 
 .box {
-    position: relative;
     border-radius: 15px;
-    width: 700px;
-    height: 80px;
-    /* border: 1px solid #8f8f8f; */
+    width: 750px;
+    height: 88px;
+    border: 1px solid #8f8f8f;
     margin: 0 auto; /* 가로 가운데 정렬 */
     display: flex;
     align-items: center;
     margin-top: 20px;
     margin-right: 590px;
-    background:#d4d4d4;
+}
+.write_move{
+	margin: 0 50px 0 20px;
+}
+.text_left{
+	text-align:left;
+}
+.skill_box {
+    width: 57px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 3px;
+    background: #f0f0f0;
+    margin-top: -10px;
+    margin-bottom: 7px; /* 아래 여백 5px 추가 */
+}
+.projectName_font {
+    font-size: 22px;
+    font-weight: bold;
+}
+.skill_font{
+	padding: 0 0 0 8px;
+	font-size:13px;
+	color:#636363;
+	font-weight: bold;
 }

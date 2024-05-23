@@ -33,7 +33,7 @@
             <div class="line_font">
             
             <div class="skill_box">
-        		<b class="skill">.백엔드</b>
+        		<b class="skill_font">.백엔드</b>
    			</div>
                 <b class="projectName_font">쇼핑몰 웹페이지 프로젝트</b>
             </div>
