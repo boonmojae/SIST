@@ -1,0 +1,26 @@
+@charset "UTF-8";
+.align-center {
+	width: 320px; /* Form의 너비 */
+    margin: 0 auto; /* 수평 가운데 정렬 */
+}
+
+.title {
+    margin: 0;
+    margin-top: 120px;
+    font-size: 23pt;
+    text-align: center;
+}
+
+.box {
+    position: relative;
+    border-radius: 15px;
+    width: 700px;
+    height: 80px;
+    /* border: 1px solid #8f8f8f; */
+    margin: 0 auto; /* 가로 가운데 정렬 */
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 590px;
+    background:#d4d4d4;
+}

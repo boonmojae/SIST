@@ -1,0 +1,70 @@
+@charset "UTF-8";
+.float-A {
+    margin: 160px;
+    width: 10%;
+    height: 600px;
+    float: left;
+}
+
+.align-center {
+	width: 320px; /* Form의 너비 */
+    margin: 0 auto; /* 수평 가운데 정렬 */
+}
+
+.title {
+    margin: 0;
+    margin-top: 120px;
+    font-size: 23pt;
+    text-align: center;
+}
+
+.box {
+    position: relative;
+    border-radius: 15px;
+    width: 700px;
+    height: 80px;
+    /* border: 1px solid #8f8f8f; */
+    margin: 0 auto; /* 가로 가운데 정렬 */
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 590px;
+    background:#d4d4d4;
+}
+
+.write {
+    padding-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color:#474747;
+}
+
+.btn_float {
+    padding: 7px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.myUpdate_btn,
+.myDelete_btn {
+    width: 60px;
+    height: 35px;
+    background-color: #5aca7c;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.myDelete_btn {
+    background-color: #FF2910;
+}
+
+a {
+    text-decoration-line: none;
+    color: #000;
+}

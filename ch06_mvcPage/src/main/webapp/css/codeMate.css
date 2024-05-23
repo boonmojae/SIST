@@ -6,10 +6,6 @@
 	height:600px;
 	float:left;
 }
-
-.float-B{
-	float:center;
-}
 .float-C{
 	margin:160px;
 	width:10%;
@@ -48,7 +44,7 @@ label {
     font-size: 15px;
     margin-bottom: -12px;
     display: block; /* 블록 레벨 요소로 변경 */
-    text-align: left; /* 오른쪽 정렬 */
+    text-align: left; /* 왼쪽 정렬 */
 }
 
 .input-check {
@@ -94,25 +90,49 @@ label {
     color: #8f8f8f;
     margin-top: -18px; /* 위쪽으로 위치 이동 */
 }
-/* .myCount{
-	float:left;
-	font-size: 15px;
-    margin-bottom: -12px;
-    display: block; 블록 레벨 요소로 변경
-    text-align: left; 오른쪽 정렬
-} */
 a{
 	text-decoration-line:none;
 	color:#000;
 }
 /* myCM_team*/
-.project_line{
-	border-radius: 7px;
-	/* text-align: center; */
-	width: 750px;   /* 상자의 가로 길이 */
-    height: 88px;  /* 상자의 세로 길이 */
-    border: 1px solid #8f8f8f; /* 상자의 테두리 */
+.container {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 뷰포트 높이를 100%로 설정하여 화면 중앙에 배치 */
 }
-.s_font{
-	font-size:9px;
+
+.project_box {
+    border-radius: 7px;
+    width: 750px; 
+    height: 88px;
+    border: 1px solid #8f8f8f;
+    text-align: center; /* 이 부분은 적용되지만, 내부 요소의 정렬을 위해 아래 추가 설정 필요 */
+    display: flex;
+    align-items: center;
+	margin-top:-600px;
 }
+
+.projectName_font {
+    font-size: 25px;
+}
+
+.line_font {
+    text-align: left;
+    margin-left: 15px;
+    margin-top: 2px;
+    width: 100%; /* 부모 요소의 전체 너비를 차지하도록 설정 */
+}
+.skill_box{
+	width:45px;
+    border-radius: 20px;
+	display: flex;
+    justify-content: flex-start; /* 왼쪽으로 정렬 */
+    padding: 3px; /* 필요에 따라 패딩 조정 */
+    background:#d4d4d4;
+    margin-top:-10px;
+}
+.skill{
+	font-size:13px;
+}
+/*나의 활동 내가 보낸 댓글*/

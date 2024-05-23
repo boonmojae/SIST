@@ -27,18 +27,21 @@
 		
 		
 <br><br><br>
-
-
-    <h3 class="title">참여중인 팀</h3>
-
-	<br><br>
-        <div class="project_line">
-        	<div class="s_font">
-        	백엔드
-        	</div>
-			쇼핑몰 웹페이지 프로젝트
+<h3 class="title">참여중인 팀</h3>
+    <div class="container">
+        <div class="project_box">
+            <div class="line_font">
+            
+            <div class="skill_box">
+        		<b class="skill">.백엔드</b>
+   			</div>
+                <b class="projectName_font">쇼핑몰 웹페이지 프로젝트</b>
+            </div>
+            
+            <div>
+            
+            </div>
         </div>
-        <br>
-
+    </div>
 </body>
 </html>

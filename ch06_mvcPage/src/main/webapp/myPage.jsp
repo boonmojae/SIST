@@ -27,7 +27,6 @@
 		
 		
 <br><br><br>
-<div class="float-B">
 <div class="align-center">
     
     <form name="upForm" action="" method="post" class="upForm">
@@ -68,7 +67,6 @@
             <span>로그아웃</span>
         </div>
     </form>
-</div>
 </div>
 </body>
 </html>
