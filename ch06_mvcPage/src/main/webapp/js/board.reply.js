@@ -125,7 +125,17 @@ $(function(){
 	/*==============================
 	* 댓글 수정
 	* =============================*/
-	
+	$(document).on('click','.modify-btn',function(){
+		//댓글 번호
+		let re_num = $(this).attr('data-renum');
+		//댓글 내용													g:지정문자열 모두,i:대소문자 무시
+		let content = $(this).parent().find('p').html().replace(/<br>/gi,'\n');//br이 대문자면 구별하지말고 다 \n으로 바꿔라/안하면 <br>태그가 보임
+		
+		//댓글 수정폼 UI
+		let modifyUI = '<form id="mre_form">';
+		modifyUI += '<input type="hidden" name="re_num" id="mre_num" value="' + re_num + '">';
+		modifyUI += '<textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content" >' + content + '</textarea>';
+	});
 	/*==============================
 	* 댓글 등록 및 수정 공통
 	* =============================*/
