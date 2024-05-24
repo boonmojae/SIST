@@ -6,29 +6,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>상품정보</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
-		<h4>최신 상품</h4>
-		<div class="image-space">
-			<c:forEach var="item" items="${itemList}">
-			<div class="horizontal-area">
-				<a href="${pageContext.request.contextPath}/item/detail.do?item_num=${item.item_num}">
-					<img src="${pageContext.request.contextPath}/upload/${item.photo1}">
-					<span>${item.name}</span>
-					<br>
-					<b><fmt:formatNumber value="${item.price}"/>원</b>
-				</a>
-			</div>
-			</c:forEach>
-			<div class="floar-clear">
-				<hr width="100%" size="1" noshade="noshade">
+		<c:if test="${item.status == 1}">
+		<div class="result-display">
+			<div class="align-center">
+				본 상품은 판매 중지되었습니다.
+				<p>
+				<input type="button" value="판매상품 보기" onclick="location.href='itemList.do'">
 			</div>
 		</div>
+		</c:if>
+		<c:if test="${item.status == 2}">
+		
+		</c:if>
 	</div>
 </div>
 </body>

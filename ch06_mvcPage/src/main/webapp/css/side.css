@@ -1,9 +1,10 @@
 @charset "UTF-8";
-.float-A {
-    margin: 140px;
-    width: 10%;
-    height: 600px;
-    float: left;
+/* side */
+.float-A{
+	margin:140px;
+	width:10%;
+	height:600px;
+	float:left;
 }
 .myCount a {
     display: block; /* 줄바꿈 효과를 위해 블록 요소로 설정 */

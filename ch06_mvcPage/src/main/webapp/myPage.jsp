@@ -5,8 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <title>나의 정보 수정</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/side.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/pmj.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//회원 정보 수정 유효성 체크
+	$('#modify_form').submit(function(){
+		const items = document.querySelectorAll('.input-check');
+		for(let i = 0;i<items.length;i++){
+			if(items[i].value.trim()==''){
+				const label = document.querySelector('label[for="'+items[i].id+'"]');
+				alert(label.textContent + ' 항목은 필수 입력');
+				items[i].value = '';
+				items[i].focus();
+				return false;
+			}
+		}  
+	});
+});
+</script>
 </head>
 <body>
 <!-- 헤더 -->
@@ -27,39 +44,39 @@
 </div>	
 <!-- 사이드바 끝 -->
 <!-- 메인 정보 수정 -->
-<br><br><br><!-- br보다 마진이나 패딩값으로 내리기 -->
+
 <div class="float-B">
 <div class="align-center">
-    <form name="upForm" action="" method="post" class="upForm">
+    <form name="modify_form" action="modifyUser.do" method="post" class="modifyUser">
     <h3 class="title">나의 정보 수정</h3>
 	<br><br>
         <div>
             <ul>
                 <li>
-                    <label for="name" class="red-text">이름</label><br>
+                    <label for="name" class="label-text">이름</label><br>
                     <input type="text" id="name" name="name" maxlength="10" class="input-check">
                 </li>
                 <li>
-                    <label for="id" class="blue-text">아이디</label><br>
+                    <label for="id" class="label-text">아이디</label><br>
                     <input type="text" id="id" name="id" maxlength="20" class="input-check">
                 </li>
                 <li>
-                    <label for="email" class="green-text">이메일</label><br>
+                    <label for="email" class="label-text">이메일</label><br>
                     <input type="email" id="email" name="email" maxlength="50" class="input-check">
                 </li>
                 <li>
-                    <label for="nickname" class="gray-text">닉네임</label><br>
+                    <label for="nickname" class="label-text">닉네임</label><br>
                     <input type="text" id="nickname" name="nickname" maxlength="20" class="input-check">
                 </li>
                 <li>
-                    <label for="phone" class="default-text">전화번호</label><br>
+                    <label for="phone" class="label-text">전화번호</label><br>
                     <input type="text" id="phone" name="phone" maxlength="20" class="input-check">
                 </li>
             </ul>
         </div>
         <br>
         <div class="align-center margin-bottom-large">
-            <input type="submit" value="저장하기" class="save_btn">
+            <input type="submit" value="저장하기" class="save_btn" >
         </div>
         <div class="small_font">
             <br><br>

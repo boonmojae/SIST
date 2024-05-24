@@ -51,52 +51,89 @@ public class ItemDAO {
 	//관리자 - 상품 삭제
 	//관리자/사용자 - 전체 상품 개수/검색 상품 개수
 	//관리자/사용자 - 전체 상품 목록/검색 상품 목록
-	public List<ItemVO> getListItem(int start, int end, String keyfield, String keyword, int status)throws Exception{
+	   public List<ItemVO> getListItem(int start, int end, String keyfield, String keyword, int status) throws Exception {
+	      Connection conn = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      List<ItemVO> list = null;
+	      String sql = null;
+	      String sub_sql = "";
+	      int cnt = 0;
+	      
+	      try {
+	         conn = DBUtil.getConnection();
+	         
+	         if (keyword != null && !"".equals(keyword)) {
+	            //검색 처리
+	            if(keyfield.equals("1")) sub_sql += "AND name LIKE '%' || ? || '%'";
+	            else if(keyfield.equals("2")) sub_sql += "AND detail LIKE '%' || ? || '%'";
+	         }
+	         
+	         //status가 0이면 1(미표시), 2(표시) 모두 호출 -> 관리자용
+	         //status가 1이면 2(표시) 호출 -> 사용자용
+	         sql = "SELECT * FROM (SELECT a.*,rownum rnum FROM (SELECT * FROM zitem WHERE status > ? " + sub_sql + 
+	               " ORDER BY item_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(++cnt, status);
+	         if (keyword != null && !"".equals(keyword)) {
+	            pstmt.setString(++cnt, keyword);
+	         }
+	         pstmt.setInt(++cnt, start);
+	         pstmt.setInt(++cnt, end);
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         list = new ArrayList<ItemVO>();
+	         while (rs.next()) {
+	            ItemVO item = new ItemVO();
+	            item.setItem_num(rs.getInt("item_num"));
+	            item.setName(rs.getString("name"));
+	            item.setPrice(rs.getInt("price"));
+	            item.setQuantity(rs.getInt("quantity"));
+	            item.setPhoto1(rs.getString("photo1"));
+	            item.setReg_date(rs.getDate("reg_date"));
+	            item.setStatus(rs.getInt("status"));
+	            
+	            list.add(item);
+	         }
+	      } catch (Exception e) {
+	         throw new Exception(e);
+	      } finally {
+	         DBUtil.executeClose(rs, pstmt, conn);
+	      }
+	      
+	      return list;
+	   }
+	//관리자/사용자 - 상품상세
+	public ItemVO getItem(int item_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<ItemVO> list = null;
+		ItemVO item = null;
 		String sql = null;
-		String sub_sql = null;
-		int cnt = 0;
 		try {
 			//커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
-			
-			if(keyword!=null && !"".equals(keyword)) {
-				//검색 처리-and는 status,name검색해야돼서 있음
-				if(keyfield.equals("1")) sub_sql += "AND name LIKE '%' || ? || '%'";
-				else if(keyfield.equals("2")) sub_sql += "AND detail LIKE '%' || ? || '%'";
-			}
-			
 			//SQL문 작성
-			//status가 0이면, 1(미표시),2(표시) 모두 호출 -> 관리자용
-			//status가 1이면, 2(표시)호출 -> 사용자용													=하면 메서드 여러개 만들어야됨/+sub_sql앞뒤로 공백 줘야됨
-			sql = "SELECT * FROM (SELECT a.*,rownum rnum FROM (SELECT * FROM zitem WHERE status > ? " + sub_sql
-					+ " ORDER BY item_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+			sql = "SELECT * FROM zitem WHERE item_num=?";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
-			pstmt.setInt(++cnt, status);
-			if(keyword!=null && !"".equals(keyword)) {
-				pstmt.setString(++cnt, keyword);
-			}
-			pstmt.setInt(++cnt, start);
-			pstmt.setInt(++cnt, end);
+			pstmt.setInt(1, item_num);
 			//SQL문 실행
 			rs = pstmt.executeQuery();
-			list = new ArrayList<ItemVO>();
-			while(rs.next()) {
-				ItemVO item = new ItemVO();
+			if(rs.next()) {
+				item = new ItemVO();
 				item.setItem_num(rs.getInt("item_num"));
 				item.setName(rs.getString("name"));
 				item.setPrice(rs.getInt("price"));
 				item.setQuantity(rs.getInt("quantity"));
 				item.setPhoto1(rs.getString("photo1"));
-				item.setReg_date(rs.getDate("reg_daate"));
+				item.setPhoto2(rs.getString("photo2"));
+				item.setDetail(rs.getString("detail"));
+				item.setReg_date(rs.getDate("reg_date"));
 				item.setStatus(rs.getInt("status"));
-				
-				list.add(item);
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -104,8 +141,6 @@ public class ItemDAO {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 		
-		return list;
+		return item;
 	}
-	//관리자/사용자 - 상품상세
-	
 }
