@@ -17,9 +17,10 @@ public class UserDetailAction implements Action{
 		//한건의 데이터 읽어오기
 		ItemDAO dao = ItemDAO.getInstance();
 		ItemVO item = dao.getItem(item_num);//자바빈에 데이터 담아서 가져옴
+		System.out.println(item);
 		
 		//상품설명 줄바꿈 처리(HTML 태그 허용)
-		item.setDetail(StringUtil.useBrHTML(null));
+		item.setDetail(StringUtil.useBrHTML(item.getDetail()));//null로 되어있으면 데이터 안나옴
 		
 		request.setAttribute("item", item);
 		

@@ -155,6 +155,12 @@ public class MemberDAO {
 		}
 		return member;
 	}
+	
+	
+
+	
+	//=================================================
+	
 	//회원정보 수정
 	public void updateMember(MemberVO member) throws Exception{
 		

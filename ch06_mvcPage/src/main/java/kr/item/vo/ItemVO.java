@@ -74,4 +74,10 @@ public class ItemVO {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "ItemVO [item_num=" + item_num + ", name=" + name + ", price=" + price + ", quantity=" + quantity
+				+ ", photo1=" + photo1 + ", photo2=" + photo2 + ", detail=" + detail + ", reg_date=" + reg_date
+				+ ", modify_date=" + modify_date + ", status=" + status + "]";
+	}
 }
