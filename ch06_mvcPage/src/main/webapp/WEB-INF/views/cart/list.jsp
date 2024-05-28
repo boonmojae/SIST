@@ -58,7 +58,7 @@
 				</c:forEach>
 				<tr>
 					<td colspan="3" class="align-right"><b>총구매금액</b></td>
-					<td class="align-center"><%-- <fmt:formatNumber value="${all_total}"/> --%>원</td>
+					<td class="align-center"><fmt:formatNumber value="${all_total}"/>원</td>
 				</tr>
 			</table>
 			<div class="align-center">

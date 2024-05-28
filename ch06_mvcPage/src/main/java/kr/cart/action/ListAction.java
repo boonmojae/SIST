@@ -23,13 +23,14 @@ public class ListAction implements Action{
 		//로그인 된 경우
 		CartDAO dao = CartDAO.getInstance();
 		//회원번호별 총구매액
-		//int all_total = dao.getTotalByMem_num(user_num);
+		int all_total = dao.getTotalByMem_num(user_num);
 		
 		List<CartVO> list = null;
-		//if(all_total>0) {
+		if(all_total>0) {
 			list = dao.getListCart(user_num);
-		//}
-		//request.setAttribute("all_total", all_total);
+		}
+		
+		request.setAttribute("all_total", all_total);
 		request.setAttribute("list", list);
 		
 		return "/WEB-INF/views/cart/list.jsp";

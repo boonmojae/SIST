@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원탈퇴</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/share.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -21,64 +23,35 @@ $(function(){
 				return false;
 			}
 		}//end of for
-		
-		//비밀번호=비밀번호 확인 
-		if($('#passwd').val()!=$('#cpasswd').val()){
-			alert('새비밀번호와 새비밀번호 확인이 불일치');
-			$('#passwd').val('').focus();
-			$('#cpasswd').val('');
-			return false;
-		}
-	});//end of submit
-	
-	//비밀번호 확인까지 한 후 다시 비밀번호를 수정하려고 하면 비밀번호 확인을 초기화
-	$('#passwd').keyup(function(){
-		$('#cpasswd').val('');
-		$('#message_cpasswd').text('');
-	});
-	
-	//새비밀번호와 새비밀번호 확인 일치 여부 체크
-	$('#cpasswd').keyup(function(){
-		if($('#passwd').val()==$('#cpasswd').val()){
-			$('#message_cpasswd').text('비밀번호 일치');
-		}else{
-			$('#message_cpasswd').text('');
-		}
-	});
 });
 </script>
 </head>
 <body>
-<div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="content-main">
-		<h2>회원탈퇴</h2>
-		<form id="delete_form" action="deleteUser.do" method="post">
-			<ul>
-				<li>
-					<label for="id">아이디</label>
-					<input type="text" name="id" id="id" maxlength="50" autocomplete="off" class="input-check">
+<div id="login_logo">
+			<a href="${pageContext.request.contextPath}/main/main.do" class="logo"> 
+			<img id="logo_pic_login" src="${pageContext.request.contextPath}/images/로고1.png" height="80" width="80"> CODEMATE
+			</a>
+		</div>
+		
+		<div class="login_main">
+		<form id="login_form" action="login.do" method="post">
+			<ul id="insert">
+				<li class="floating-label">
+					<input type="text" class="form-input" placeholder="아이디" 
+					name="id" id="id" maxlength="12" autocomplete="off">
+					<label for="id"></label>
 				</li>
-				<li>
-					<label for="email">이메일</label>
-					<input type="email" name="email" id="email" maxlength="50" autocomplete="off" class="input-check">
-				</li>
-				<li>
-					<label for="passwd">비밀번호</label>
-					<input type="password" name="passwd" id="passwd" maxlength="12" class="input-check">
-				</li>
-				<li>
-					<label for="cpasswd">비밀번호 확인</label>
-					<input type="password" id="cpasswd" maxlength="12" class="input-check"><!-- 전송X 자바스크립트 확인용으로 name제거 -->
-					<span id="message_cpasswd"></span>
+				<li class="floating-label">
+					<input type="password" class="form-input" placeholder="비밀번호" 
+					name="passwd" id="passwd" maxlength="12">
+					<label for="passwd"></label>
 				</li>
 			</ul>
 			<div class="align-center">
-				<input type="submit" value="회원탈퇴">
-				<input type="button" value="My페이지" onclick="location.href='myPage.do'"><!-- 경로가 다를경우 uri방식으로 작성,자바스크립트에 문자열 제공하는거라''있어야됨 -->
+				<input id="login_btn" type="submit" value="회원탈퇴">
+				<input id="cancel_btn" type="button" value="홈으로" onclick="window.location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
-		</form>
+		</form>	
 	</div>
-</div>
 </body>
 </html>

@@ -43,7 +43,38 @@ public class CartDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
-	//회원번호별 총 구매액
+	//회원번호별 총구매액
+	public int getTotalByMem_num(int mem_num)throws Exception{
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int total = 0;
+		try {
+			//커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "SELECT SUM(sub_total) FROM (SELECT mem_num,order_quantity * price AS sub_total FROM zcart "
+					+ "JOIN zitem USING(item_num)) WHERE mem_num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, mem_num);
+			//SQL문 실행
+			rs = pstmt.executeQuery();//sum 집합함수 사용해 행이 하나
+			if(rs.next()) {
+				total = rs.getInt(1);//sum컬럼명=1
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return total;
+	}
+	
 	//장바구니 목록
 	public List<CartVO> getListCart(int mem_num)throws Exception{
 		
