@@ -42,7 +42,7 @@
 						<c:if test="${cart.itemVO.status == 1 or cart.itemVO.quantity < cart.order_quantity}">[판매중지]</c:if>
 						<c:if test="${cart.itemVO.status == 2 and cart.itemVO.quantity >= cart.order_quantity}">
 						<input type="number" name="order_quantity" min="1" max="${cart.itemVO.quantity}" value="${cart.order_quantity}" class="quantity-width">
-						<br>
+						<br>		<%-- order_quantity에 접근해서 cart-modify에 접근 --%>
 						<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.cart_num}" data-itemnum="${cart.item_num}">
 						</c:if>
 					</td>
@@ -51,8 +51,8 @@
 					</td>
 					<td class="align-center">
 						<fmt:formatNumber value="${cart.sub_total}"/>원
-						<br>
-						<input type="button" value="삭제" class="cart-del" data-cartnum="${cart.cart_num}">
+						<br>									<%--cart-del을 누르는 이벤트가 발생하면  data-cartnum를 지우는--%>
+						<input type="button" value="삭제" class="cart-del" data-cartnum="${cart.cart_num}"><%-- 커스텀 데이터 속성으로 shop.cart.js에서 cart_num만 넘겨줘서 가장 가까운곳에서 정보를 얻을수있게 --%>
 					</td>
 				</tr>
 				</c:forEach>

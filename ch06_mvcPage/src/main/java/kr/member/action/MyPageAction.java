@@ -32,10 +32,10 @@ public class MyPageAction implements Action{
 		//list 반환
 		List<BoardVO> boardList = boardDAO.getListBoardFav(1, 5, user_num);
 		
-		request.setAttribute("member", member);
-		request.setAttribute("boardList", boardList);
 		//읽어왔으니까 저장
 		request.setAttribute("member", member);
+		request.setAttribute("boardList", boardList);
+		
 		//JSP 경로 반환
 		return "/WEB-INF/views/member/myPage.jsp";
 	}
