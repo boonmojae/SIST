@@ -12,7 +12,7 @@
 	<h2>뉴스 등록 완료</h2>
 	<div class="result-display">
 		<div class="align-center">
-			뉴스 등록을 완료했습니다.<p>
+			뉴스 등록을 완료했습니다. <p>
 			<button onclick="location.href='list.do'">목록</button>
 		</div>
 	</div>
