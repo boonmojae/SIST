@@ -11,6 +11,7 @@ import kr.board.vo.BoardVO;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
+import kr.oder.dao.OrderDAO;
 
 public class MyPageAction implements Action{
 
@@ -29,12 +30,16 @@ public class MyPageAction implements Action{
 		
 		//관심 게시물 정보
 		BoardDAO boardDAO = BoardDAO.getInstance();
-		//list 반환
-		List<BoardVO> boardList = boardDAO.getListBoardFav(1, 5, user_num);
+		List<BoardVO> boardList = boardDAO.getListBoardFav(1, 5, user_num);//list 반환
+		
+		//구매상품
+		//OderDAO orderDAO = OrderDAO.getInstance();
+		//List<OrderVO> orderList = OrderDAO.getListOrderBYMem_num(1,5,null,null,user_num);
 		
 		//읽어왔으니까 저장
 		request.setAttribute("member", member);
 		request.setAttribute("boardList", boardList);
+		//request.setAttribute("orderList", orderList);
 		
 		//JSP 경로 반환
 		return "/WEB-INF/views/member/myPage.jsp";
