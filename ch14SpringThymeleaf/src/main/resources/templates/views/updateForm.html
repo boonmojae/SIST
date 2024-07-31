@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org"
+	  xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/basicLayout}"><!-- namespace 추가해서 html생성 ,서버는 동적으로 생성해 html만듦-->
+<head>
+<meta charset="UTF-8">
+<title>글 수정</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+<div layout:fragment="content" class="page-main">
+	<h2>글 수정</h2>
+	<!-- th:object : request에 저장되어 있는 자바빈 호출(el로 읽어옴)/유효성 체크 하기위해서 명시함 -->
+	<form action="update.do" method="post" th:object="${boardVO}"><!-- 타임리프에서는 form 사용불가,jsp에서만 사용할 수 있음/th:object가 request에 저장된 자바빈 읽어옴 -->
+		<input type="hidden" th:field="*{num}"><!-- boardVO.num = *{num} -->
+		<ul>
+			<li>
+				<label for="writer">작성자</label>
+				<!-- 
+				th:field : 자바빈에 필드를 지정
+				*{writer} = boardVO.writer 와 같음. 일반 writer는 인식못함
+				-->
+				<input type="text" th:field="*{writer}" 
+				th:errorclass="field-error">
+				<span th:errors="*{writer}" class="error-color"></span><!-- path와 동일/예외가 생기면 field-error가 만들어지면서 span연동(한쌍으로) -->
+			</li>
+			<li>
+				<label for="title">제목</label>
+				<input type="text" th:field="*{title}" 
+				th:errorclass="field-error">
+				<span th:errors="*{title}" class="error-color"></span>
+			</li>
+			<li>
+				<label for="passwd">비밀번호</label>
+				<input type="password" th:field="*{passwd}" 
+				th:errorclass="field-error">
+				<span th:errors="*{passwd}" class="error-color"></span>
+			</li>
+			<li>
+				<label for="passwd">내용</label>
+				<textarea rows="5" cols="30" th:field="*{content}" th:errorclass="field-error"></textarea>
+				<span th:errors="*{content}" class="error-color"></span>
+			</li>
+		</ul>
+		<div class="align-center">
+			<input type="submit" value="수정">
+			<input type="button" value="목록" onclick="location.href='list.do'">
+		</div>
+	</form>
+</div>
+</body>
+</html>

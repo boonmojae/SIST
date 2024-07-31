@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org"
+	  xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">	   <!--/* 레이아웃의 타이틀 > 내용의 타이틀 */-->
+<title layout:title-pattern="$LAYOUT_TITLE > $CONTENT_TITLE">게시판</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+	<div th:replace="fragments/header::header"></div><!--/* 이 div없애고 header에 있는 div대체함 */-->
+	<div layout:fragment="content"></div><!--/* 여기 div 하위에 내용이 들어감 */--><!--/* content까지 추가하면 이 레이아웃에서 조합된는것  */-->
+	<div th:replace="fragments/footer::footer"></div>
+</body>
+</html>

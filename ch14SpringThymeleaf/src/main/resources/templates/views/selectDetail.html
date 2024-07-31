@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org"
+	  xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/basicLayout}"><!-- 이게 없으면 일반 html -->
+<head>
+<meta charset="UTF-8">
+<title>글상세</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+<div layout:fragment="content" class="page-main">
+	<h2 th:text="${board.title}"></h2>
+	<p>
+		<span th:text="'글번호 : ' + ${board.num}"></span><br><!-- ${board.num}동적인 데이터 처리하려면 ''붙이기 -->
+		<span>작성자 : [[${board.writer}]]</span><br><!-- 두가지 형태로 명시 가능 -->
+		<span>작성일 : [[${board.reg_date}]]</span>
+	</p>
+	<hr width="100%" size="1" noshade="noshade">
+	<p th:text=${board.content}></p><!-- html태그 불허 -->
+	<div class="align-center">
+		<input type="button" value="수정" th:onclick="|location.href='@{update.do(num=${board.num})}'|"><!-- ${board.num}사용하려면 타임리프 속성이어야됨 th:추가/uri방식이 아니어서(=지금은 파일임) @{}만함/?->()대체 -->
+		<input type="button" value="삭제" th:onclick="|location.href='@{delete.do(num=${board.num})}'|">
+		<input type="button" value="목록" onclick="location.href='list.do'"><!-- queryString으로 넘길게 없어서 알던 대로 명시 -->
+	</div>
+</div>
+</body>
+</html>

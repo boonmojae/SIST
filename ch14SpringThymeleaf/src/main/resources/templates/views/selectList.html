@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org"
+	  xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/basicLayout}"><!-- 폴더,파일명 명시(확장자는 안적음)/레이아웃 경로 지정/basicLayout가 동작되면서 title,div정보를 읽어감 -->
+<head>
+<!-- meta태그는 있어서 제거,있어도 안가져감 -->
+<title>목록</title><!-- 접두사 th를 사용해 타임리프 속성이 됨/ 타임리프 속성은 주소를 uri로 명시하기 위해서 사용,파일명만 쓸거면 타임리프 사용안해도됨 -->
+<!-- 링크 있어도 안가져감 -->
+</head>
+<body>
+<div layout:fragment="content" class="page-main"><!-- 해당 content부분에 삽입 layout:fragment="content" -->
+	<h2>게시판 목록</h2>
+	<div class="align-right">
+		<input type="button" value="글쓰기" onclick="location.href='insert.do'"><!-- 파일명만 쓸거면 타임리프 사용안함 -->
+	</div>
+	<div class="result-display" th:if="${count == 0}">표시할 내용이 없습니다</div><!-- c:if 처럼 태그로 명시했지만/지금은 태그가 없어 (th)속성으로 처리 true여야 보임 -->
+	<div th:if="${count > 0}">
+	<table>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+		</tr>
+		<tr th:each="board : ${list}"><!-- board=자바빈을 가리킴(변수)/(객체) el이 ArrayList를 읽어서 데이터 가져옴 -->
+			<!-- <td>[[${board.num}]]</td> -->
+			<td th:text="${board.num}"></td><!-- 글번호를  >(여기)< 사이에 넣어줌 -->
+			<td><a th:href="@{detail.do(num=${board.num})}" th:text="${board.title}"></a></td><!-- el을 읽어오려면 타임리프 속성을 사용해야됨/th를 붙여야 ${board.title}를 호출할 수 있음/타임리프는 ?를 사용못함 그래서 경로형태로 명시하려면()  -->
+			<td th:text="${board.writer}"></td>
+			<td th:text="${board.reg_date}"></td>
+		</tr>
+	</table>
+	<div class="align-center" th:utext="${page}"></div><!-- utext없으면 태그가 다 보여짐,추가해야 태그가 정상적이게 동작됨/th:text태그 불인정 -->
+	</div>
+</div>
+</body>
+</html>
