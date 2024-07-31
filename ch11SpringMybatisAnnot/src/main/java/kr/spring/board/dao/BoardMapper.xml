@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.board.dao.BoardMapper"> <!-- BoardMapper가 인터페이스명을 가리키게 해야(자동매핑이 됨) -->
+	<!-- 목록 --><!-- id는 Mapper의 메서드명 -->
+	<select id="selectBoardList" parameterType="map" resultType="boardVO"><!-- 클래스를 구현하게되면 id를 명시하고 여기에 명시해서 같은식별자를 부여했음/클래스 구현 안하는 지금은 메서드 명을 id로 사용.어차피 메소드랑 매핑되니까/xml이니까 param,result명시해야됨 -->
+		SELECT
+		  *
+		FROM (SELECT
+				a.*,
+				rownum rnum
+				FROM (SELECT
+					*
+					FROM aboard
+					ORDER BY reg_date DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<!-- 글쓰기 -->
+	<insert id="insertBoard" parameterType="boardVO">
+		INSERT INTO aboard(
+			num,
+			writer,
+			title,
+			passwd,
+			content,
+			reg_date)
+		VALUES (
+		   aboard_seq.nextval,
+		   #{writer},
+		   #{title},
+		   #{passwd},
+		   #{content},
+		    SYSDATE)
+	</insert>
+ </mapper>
+
+
+
+
+
+
+
