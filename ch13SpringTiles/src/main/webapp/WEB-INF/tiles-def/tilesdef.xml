@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions><!-- TilesController-return의 main이 definition설정의 식별자명  -->
+	<definition name="main" template="/WEB-INF/views/template/layout.jsp"><!-- layout.jsp에 include한게 다 조합되게 -->
+		<put-attribute name="title" value="Spring Tiles Example"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/main_view.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="company" extends="main"><!-- Tiles는 기존 설정을 상속할수 있음 -->
+		<put-attribute name="title" value="회사소개"/>
+		<put-attribute name="body" value="/WEB-INF/views/company_view.jsp"/><!-- 바뀌는것만 명시 -->
+	</definition>
+	
+	<definition name="product" extends="main"><!-- Tiles는 기존 설정을 상속할수 있음 -->
+		<put-attribute name="title" value="제품소개"/>
+		<put-attribute name="body" value="/WEB-INF/views/product_view.jsp"/><!-- 바뀌는것만 명시 -->
+	</definition>
+</tiles-definitions>
