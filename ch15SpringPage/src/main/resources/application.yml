@@ -1,0 +1,60 @@
+spring:
+  profiles:
+    active: local #local,dev,real로 환경설정 만들어줌
+
+  mvc:
+    view: #view 경로 및 확장자 지정
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
+  datasource:
+      driver-class-name: oracle.jdbc.OracleDriver
+      url: jdbc:oracle:thin:@localhost:1521:xe
+      username: user01
+      password: 1234
+      hikari:
+        connection-timeout: 30000 #클라이언트가 pool에 connection을 요청하는데 기다리는 최대시간을 설정
+        maximum-pool-size: 10 #최대 커넥션 개수 설정
+        max-lifetime: 1800000 #커넥션 풀에서 살아있을 수 있는 커넥션의 최대 수명기간 1,800초(30분)
+      
+  messages: #메세지 처리
+    basename: messages.validation
+    encoding: UTF-8
+    
+  #재실행 할수 있게 설정(수정한게 있다면 리로드 되게)
+  devtools: #view reload
+    livereload:
+      enabled: true
+    
+    restart: #컨트롤러,모델단이 바뀌었을 때 프로젝트 재시작 설정(정확히 classpath(=src)에 있는 모든 파일)
+      enabled: true
+      
+  servlet:
+    multipart:
+      max-file-size: 50MB #파일 한 개당 최대 사이즈
+      max-request-size: 200MB #요청당 최대 파일 크기
+        
+        
+      
+mybatis:
+  type-aliases-package: kr.spring.**.vo #파일을 많이 만들게 되면 board->member,item이 될수 있으니까 폴더 형태 **로 작성, 파일은 *
+  mapper-locations: kr/spring/**/dao/*.xml #형식만 지키면 자동 스캔대상 됨
+
+#log4파일이 없어서 설정
+logging:
+  level:
+    #root: error는 별도로 명시X
+    '[kr.spring]': debug
+    
+#포트 지정(전에 했던거 충돌 안나게 하기 위해서 8080말고 8000으로)
+server:
+  port: 8000
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true #http 인코딩 지원을 활성활지 여부
+      force: true
+  tomcat:
+    max-http-form-post-size: 200MB #톰캣에서 허용하는 파일 업로드 사이즈
+      
+    
