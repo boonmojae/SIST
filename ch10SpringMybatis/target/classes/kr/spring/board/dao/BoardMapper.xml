@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.board.dao.BoardDAO"> <!-- namespace 유니크 지정,인터페이스명 -->
+	<!-- 마이바티스 테이블 컬럼명=자바빈 프로퍼티명 일치해야 자동으로 매핑,일치하지 않으면 RowMap처럼 수동매핑해야됨/테이블 컬럼없는데 조인에 의해 만들어진 컬럼은 자바빈(VO)에 넣어놔야됨 -->
+	<!-- 총레코드 수 -->
+				<!-- 호출한 id						반환타입 -->
+	<select id="selectBoardCount" resultType="integer"><!-- selectOne에서 지정한 아이디를 넣어서 xml에서 sql 읽어감/태그는 반환타입을 명시해야됨(풀네임 사용필수)기본자료형X객체타입으로 사용(java.lang.Integer)를 알리아스 별칭처리함 -->
+		<!-- 가독성을 위해 줄바꿈 탭 사용(표준규칙)/회사에서 정한 규칙 따르면됨 -->
+		SELECT
+		 COUNT(*)
+		FROM aboard
+	</select>													<!-- list가 아닌 자바빈을 명시해야 하나의 레코드를 자바빈에 담고 ? 돌리면서 여러개의 데이터를 List로 명시 -->
+	<select id="selectBoardList" parameterType="map" resultType="boardVO"><!-- 전달하는 데이터 타입 지정,반환타입 지정(실제데이터가 담기는 자바빈 명시)해야 sql실행했을때 하나의 자바빈을 담고 마이바티스가 가지고 있는 내부에서 자바빈에 담긴걸 list에 제공 -->
+		SELECT
+		   *
+		FROM (SELECT
+			   a.*,
+			   rownum rnum
+			   FROM(SELECT
+			   		*
+			   	   FROM aboard
+			   	   ORDER BY num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]><!-- 안에 있는건 문법체크 안하게 함/start,end식별자는 파라미터 map(15)에 있는 키를 명시한것,이거로 데이터를 읽어옴 -->
+	</select>
+	<!-- 글쓰기 -->
+	<insert id="insertBoard" parameterType="boardVO"><!-- 데이터가 파라미터로 전달/resultType은 없음(반환하는게 없어서) --><!-- 실제 데이터는 BoardVO 자바빈 프로퍼티에 있어서 VALUES의 값을 이렇게 작성#{writer}=자바빈프로퍼티 -->
+		INSERT INTO aboard(
+			num,
+			writer,
+			title,
+			passwd,
+			content,
+			reg_date)
+		VALUES (
+			aboard_seq.nextval,
+			#{writer},
+			#{title},
+			#{passwd},
+			#{content},
+			SYSDATE)
+	</insert>
+	<select id="selectBoard" parameterType="integer" resultType="boardVO"><!-- 파라미터타입에 integer로 하나의 데이터만 전송됨 #{num}은 데이터 하나만 전송되면 어디에 담겼는지 중요,daoImple의 식별자 num을 가져다 (변수명 자체를)사용함 -->
+		SELECT
+		   *
+		FROM aboard
+		WHERE num = #{num}
+	</select>
+	<!-- 글 수정 -->						 <!-- 알리아스(안에있는 #{writer} 프로퍼티)/반환타입없음-->
+	<update id="updateBoard" parameterType="boardVO">
+		UPDATE aboard
+		SET
+		  writer=#{writer},
+		  title=#{title},
+		  content=#{content}
+		WHERE num=#{num}
+	</update>
+	<!-- 글 삭제/num은 boardDAOImple의 49(없던 식별자가 아니라 변수명 사용) -->
+	<delete id="deleteBoard" parameterType="integer">
+		DELETE FROM aboard
+		WHERE num=#{num}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
